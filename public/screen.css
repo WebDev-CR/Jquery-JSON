@@ -1,0 +1,7 @@
+body	{
+  background: #eee;
+}
+
+  body label {
+    display: block;
+  }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="screen.css" />
+
+    <script>
+      $(document).ready(function($) {
+        
+        $("#documento").blur(function() {
+          $documento = $(this); // '$(this)' hace referencia al objeto que recibió el evento
+          
+          $.getJSON("/datos.php",                          // Yo usaría REST aqui. Ejemplo: /documentos/1.json, pero lo hice con datos.php para que se pareciera al tuyo.
+            { documento: $documento.val() },               // Se puede hacer mediante una cadena como lo hiciste, pero usando un hash me parece una solución más limpia.
+            function(documento)  {                         // Como puedes ver, la función tiene un parámetro, jQuery le asigna el JSON que se devolvió a ese parámetro.
+              
+              // Para asignar un nuevo valor a un campo en jQuery usamos: 
+              //    $("selector").val( NUEVO_VALOR );
+              
+              $("#nombres").val( documento.nombres );      // Del JSON 'documento' le asignamos a #nombres el valor documento.nombres
+              $("#apellidos").val( documento.apellidos );  // IDEM
+              
+          }); // getJSON
+          
+        }); // #documento.blur
+        
+      }); // document.ready
+    </script>
+    
+  </head>
+  <body>
+    <form action="index_submit" method="get" accept-charset="utf-8">
+
+      <p>
+        <label for="documento">Documento:</label><input type="text" name="documento" value="" id="documento">
+      </p>
+    
+      <p>
+        <label for="nombres">Nombres:</label><input type="text" name="nombres" value="" id="nombres">
+      </p>
+    
+      <p>
+        <label for="apellidos">Apellidos:</label><input type="text" name="apellidos" value="" id="apellidos">
+      </p>
+
+    </form>
+  </body>
+</html>
