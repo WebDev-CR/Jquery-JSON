@@ -1,6 +1,4 @@
-** REVISAR /views/index.rhtml para la respuesta **
-
-# Aplicación en respuesta a la siguiente pregunta:
+Aplicación en respuesta a la siguiente pregunta:
 
 A message from MANUEL GONZALEZ to all members of $("Costa Rica").is(":cool"); on jQuery Meetups!
 
@@ -9,7 +7,7 @@ Tengo un form con 3 campos (doc, nombres y apellidos) lo que quiero hacer es que
 He logrado enviar la consulta con éxito y con el firebug verifico y obtengo la respuesta pero por más que lo intento no logro tomar esa respuesta para colocarla en sus respectivos text.  Este es un framento del código:
 
 
-` $(document).ready(function(){
+ $(document).ready(function(){
   $("#doc").blur(function(){
         $.ajax({
          type: "POST",
@@ -22,4 +20,4 @@ He logrado enviar la consulta con éxito y con el firebug verifico y obtengo la 
          }
          })
         })
-  }); `
+  });
