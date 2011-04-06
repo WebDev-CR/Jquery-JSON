@@ -7,12 +7,14 @@
     <script>
       $(document).ready(function($) {
         
-        $("#documento").blur(function() {
+        $("#documento").change(function() {
           $documento = $(this); // '$(this)' hace referencia al objeto que recibió el evento
           
-          $.getJSON("/datos.php",                          // Yo usaría REST aqui. Ejemplo: /documentos/1.json, pero lo hice con datos.php para que se pareciera al tuyo.
-            { documento: $documento.val() },               // Se puede hacer mediante una cadena como lo hiciste, pero usando un hash me parece una solución más limpia.
-            function(documento)  {                         // Como puedes ver, la función tiene un parámetro, jQuery le asigna el JSON que se devolvió a ese parámetro.
+          $.getJSON("/datos.php",             // Yo usaría REST aqui. Ejemplo: /documentos/1.json, pero lo hice con datos.php para que se pareciera al tuyo.
+                                              // http://es.wikipedia.org/wiki/Representational_State_Transfer
+                                              
+            { documento: $documento.val() },  // Se puede hacer mediante una cadena como lo hiciste, pero usando un hash me parece una solución más limpia.
+            function(documento)  {            // Como puedes ver, la función tiene un parámetro, jQuery le asigna el JSON que se devolvió a ese parámetro.
               
               // Para asignar un nuevo valor a un campo en jQuery usamos: 
               //    $("selector").val( NUEVO_VALOR );
